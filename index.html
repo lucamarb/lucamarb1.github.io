@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profierros - Resultados y Calendario de Automovilismo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #222, #333);
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff0000;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        nav {
+            background-color: #111;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ff0000;
+        }
+        .container {
+            padding: 20px;
+        }
+        .results, .calendar, .positions {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .results h2, .calendar h2, .positions h2 {
+            color: #ff0000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: white;
+        }
+        table, th, td {
+            border: 1px solid #555;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        /* Categorías */
+        .category-list {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .category-item {
+            background-color: #ff0000;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            flex-grow: 1;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        .category-item:hover {
+            background-color: #e60000;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+            }
+            .category-list {
+                flex-direction: column;
+            }
+            .category-item {
+                margin: 10px 0;
+            }
+            table th, table td {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            nav a {
+                font-size: 12px;
+                margin: 5px;
+            }
+            table th, table td {
+                font-size: 12px;
+                padding: 5px;
+            }
+            .results, .calendar, .positions {
+                padding: 10px;
+            }
+        }
+    </style>
+    <script>
+        function showCategory(category) {
+            let categories = document.getElementsByClassName('category-section');
+            for (let i = 0; i < categories.length; i++) {
+                categories[i].classList.add('hidden');
+            }
+            document.getElementById(category).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>Profierros - Resultados y Calendario de Automovilismo</h1>
+</header>
+
+<nav>
+    <a href="#resultados">Resultados</a>
+    <a href="#posiciones">Posiciones</a>
+    <a href="#calendario">Calendario</a>
+</nav>
+
+<div class="container">
+
+    <!-- Categorías -->
+    <div class="category-list">
+        <div class="category-item" onclick="showCategory('f1')">Fórmula 1</div>
+        <div class="category-item" onclick="showCategory('wec')">WEC</div>
+        <div class="category-item" onclick="showCategory('nascar')">NASCAR</div>
+        <div class="category-item" onclick="showCategory('indycar')">IndyCar</div>
+    </div>
+
+    <!-- Resultados de categorías -->
+    <div id="f1" class="results category-section">
+        <h2>Resultados - Fórmula 1</h2>
+        <table>
+            <tr>
+                <th>Piloto</th>
+                <th>Equipo</th>
+                <th>Tiempo</th>
+            </tr>
+            <tr>
+                <td>Max Verstappen</td>
+                <td>Red Bull Racing</td>
+                <td>1:24:18.123</td>
+            </tr>
+            <tr>
+                <td>Lewis Hamilton</td>
+                <td>Mercedes</td>
+                <td>1:24:35.678</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="wec" class="results category-section hidden">
+        <h2>Resultados - WEC (24 Horas de Le Mans)</h2>
+        <table>
+            <tr>
+                <th>Equipo</th>
+                <th>Tiempo</th>
+            </tr>
+            <tr>
+                <td>Toyota Gazoo Racing</td>
+                <td>24:00:00.000</td>
+            </tr>
+            <tr>
+                <td>Porsche Penske Motorsport</td>
+                <td>24:02:45.123</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="nascar" class="results category-section hidden">
+        <h2>Resultados - NASCAR</h2>
+        <table>
+            <tr>
+                <th>Piloto</th>
+                <th>Equipo</th>
+                <th>Tiempo</th>
+            </tr>
+            <tr>
+                <td>Kyle Larson</td>
+                <td>Hendrick Motorsports</td>
+                <td>2:48:50.567</td>
+            </tr>
+            <tr>
+                <td>Joey Logano</td>
+                <td>Penske</td>
+                <td>2:49:10.890</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="indycar" class="results category-section hidden">
+        <h2>Resultados - IndyCar</h2>
+        <table>
+            <tr>
+                <th>Piloto</th>
+                <th>Equipo</th>
+                <th>Tiempo</th>
+            </tr>
+            <tr>
+                <td>Alex Palou</td>
+                <td>Chip Ganassi Racing</td>
+                <td>1:45:10.123</td>
+            </tr>
+            <tr>
+                <td>Scott Dixon</td>
+                <td>Chip Ganassi Racing</td>
+                <td>1:45:30.456</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Tabla de posiciones -->
+    <div id="posiciones" class="positions">
+        <h2>Posiciones del Campeonato - Fórmula 1</h2>
+        <table>
+            <tr>
+                <th>Piloto</th>
+                <th>Puntos</th>
+            </tr>
+            <tr>
+                <td>Max Verstappen</td>
+                <td>395</td>
+            </tr>
+            <tr>
+                <td>Sergio Pérez</td>
+                <td>285</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Calendario -->
+    <div id="calendario" class="calendar">
+        <h2>Próximas Carreras</h2>
+        <table>
+            <tr>
+                <th>Categoría</th>
+                <th>Fecha</th>
+                <th>Evento</th>
+            </tr>
+            <tr>
+                <td>Fórmula 1</td>
+                <td>15 de Octubre</td>
+                <td>Gran Premio de Japón</td>
+            </tr>
+            <tr>
+                <td>WEC</td>
+                <td>22 de Octubre</td>
+                <td>6 Horas de Fuji</td>
+            </tr>
+            <tr>
+                <td>NASCAR</td>
+                <td>29 de Octubre</td>
+                <td>Daytona 500</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
